@@ -7,10 +7,10 @@ inputs:
     required: true
   NWPS_ARTIFACTORY_PASSWORD:
     required: true
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }} 
+#outputs:
+#  random-number:
+#    description: "Random number"
+#    value: ${{ steps.random-number-generator.outputs.random-id }} 
 runs:
   using: "composite"
   steps:
