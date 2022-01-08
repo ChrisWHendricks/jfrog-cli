@@ -1,24 +1,31 @@
 name: 'Hello World'
-description: 'Greet someone'
-secrets:
+description: 'Greet someone'  
+inputs:
   NWPS_ARTIFACTORY_USERNAME:
     required: true
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  NWPS_ARTIFACTORY_PASSWORD:
     required: true
-    default: 'World'
 outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-id }}
+  env:     
+    ARTIFACTORY_USERNAME: "${{ inputs.NWPS_ARTIFACTORY_USERNAME }}"   
+    ARTIFACTORY_PASSWORD: "${{ inputs.NWPS_ARTIFACTORY_PASSWORD }}"
 runs:
   using: "composite"
   steps:
+  - name: Setup JFrog CLI
+    uses: jfrog/setup-jfrog-cli@v1
+      
     - run: |
         echo "----------------------------------"
-        echo ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
+        echo ${{ inputs.NWPS_ARTIFACTORY_USERNAME }}
         echo "----------------------------------"
+        
+        jfrog -v
+        jfrog config add --artifactory-url=${{ env.ARTIFACTORY_URL }} --user=${{ env.ARTIFACTORY_USERNAME }} --password=${{ env.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
+        jfrog rt ping
       shell: bash
     #- run: | 
     #    echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
