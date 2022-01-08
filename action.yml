@@ -8,10 +8,10 @@ inputs:
     required: true
   NWPS_ARTIFACTORY_PASSWORD:
     required: true
-#outputs:
-#  random-number:
-#    description: "Random number"
-#    value: ${{ steps.random-number-generator.outputs.random-id }} 
+outputs:
+  jfrog-token:
+    description: "JFrog Access Token"
+    value: ${{ steps.random-number-generator.outputs.random-id }} 
 runs:
   using: "composite"
   steps:
@@ -20,12 +20,19 @@ runs:
       
   - run: |
       echo "----------------------------------"
+      echo ${{ inputs.NWPS_ARTIFACTORY_URL }}
       echo ${{ inputs.NWPS_ARTIFACTORY_USERNAME }}
       echo "----------------------------------"
 
       jfrog -v
       jfrog config add --artifactory-url=${{ inputs.NWPS_ARTIFACTORY_URL }} --user=${{ inputs.NWPS_ARTIFACTORY_USERNAME }} --password=${{ inputs.NWPS_ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
       jfrog rt ping
+      jfrog rt atc 
+      token=$(jfrog rt atc)
+      echo $token
+      #--url=${{ env.ARTIFACTORY_URL }} --user=${{ env.ARTIFACTORY_USERNAME }} --password=${{ env.ARTIFACTORY_PASSWORD }}
+      
+      
     shell: bash
     #- run: | 
     #    echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
