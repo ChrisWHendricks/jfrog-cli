@@ -4,10 +4,10 @@ inputs:
   NWPS_ARTIFACTORY_URL:
     description: 'Artifactory Url'
     required: true
-  #NWPS_ARTIFACTORY_USERNAME:
-  #  required: true
-  #NWPS_ARTIFACTORY_PASSWORD:
-  #  required: true
+  NWPS_ARTIFACTORY_USERNAME:
+    required: true
+  NWPS_ARTIFACTORY_PASSWORD:
+    required: true
 #outputs:
 #  random-number:
 #    description: "Random number"
@@ -24,7 +24,7 @@ runs:
       echo "----------------------------------"
 
       jfrog -v
-      jfrog config add --artifactory-url=${{ inputs.ARTIFACTORY_URL }} --user=${{ inputs.ARTIFACTORY_USERNAME }} --password=${{ inputs.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
+      jfrog config add --artifactory-url=${{ inputs.NWPS_ARTIFACTORY_URL }} --user=${{ inputs.NWPS_ARTIFACTORY_USERNAME }} --password=${{ inputs.NWPS_ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
       jfrog rt ping
     shell: bash
     #- run: | 
