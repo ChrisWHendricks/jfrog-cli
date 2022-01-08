@@ -11,7 +11,9 @@ jobs:
       - id: foo
         uses: chriswhendricks/jfrog-cli@master
         with:
-          who-to-greet: ${{ secrets.TEST_SECRET }}
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+          NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
+          NWPS_ARTIFACTORY_PASSWORD: ${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}
+          
+      #- run: echo random-number ${{ steps.foo.outputs.random-number }}
+      #  shell: bash
 
