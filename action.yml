@@ -15,22 +15,27 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: | 
-        echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
-        ls ${{ github.action_path }}
-        cat ${{ github.action_path }}/test.log
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: |     
+    - run: |
         echo "----------------------------------"
-        cat ${{ github.action_path }}/test.log
-         echo "----------------------------------"
-        echo "${{ github.action_path }}"
+        echo ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
         echo "----------------------------------"
-        ls ${{ github.action_path }}
-        echo "----------------------------------"
-        echo "hello"
-        ${{ github.action_path }}/goodbye.sh
       shell: bash
+    #- run: | 
+    #    echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
+    #    ls ${{ github.action_path }}
+    #    cat ${{ github.action_path }}/test.log
+    #  shell: bash
+    #- id: random-number-generator
+    #  run: echo "::set-output name=random-id::$(echo $RANDOM)"
+    #  shell: bash
+    #- run: |     
+    #    echo "----------------------------------"
+    #    cat ${{ github.action_path }}/test.log
+    #     echo "----------------------------------"
+    #    echo "${{ github.action_path }}"
+    #    echo "----------------------------------"
+    #    ls ${{ github.action_path }}
+    #    echo "----------------------------------"
+    #   echo "hello"
+    #    ${{ github.action_path }}/goodbye.sh
+    #  shell: bash
