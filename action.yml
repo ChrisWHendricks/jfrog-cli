@@ -1,6 +1,8 @@
 name: 'Hello World'
 description: 'Greet someone'  
 inputs:
+  NWPS_ARTIFACTORY_URL:
+    required: true
   NWPS_ARTIFACTORY_USERNAME:
     required: true
   NWPS_ARTIFACTORY_PASSWORD:
@@ -8,10 +10,7 @@ inputs:
 outputs:
   random-number:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
-  env:     
-    ARTIFACTORY_USERNAME: "${{ inputs.NWPS_ARTIFACTORY_USERNAME }}"   
-    ARTIFACTORY_PASSWORD: "${{ inputs.NWPS_ARTIFACTORY_PASSWORD }}"
+    value: ${{ steps.random-number-generator.outputs.random-id }} 
 runs:
   using: "composite"
   steps:
@@ -24,7 +23,7 @@ runs:
         echo "----------------------------------"
         
         jfrog -v
-        jfrog config add --artifactory-url=${{ env.ARTIFACTORY_URL }} --user=${{ env.ARTIFACTORY_USERNAME }} --password=${{ env.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
+        jfrog config add --artifactory-url=${{ inputs.ARTIFACTORY_URL }} --user=${{ inputs.ARTIFACTORY_USERNAME }} --password=${{ inputs.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
         jfrog rt ping
       shell: bash
     #- run: | 
