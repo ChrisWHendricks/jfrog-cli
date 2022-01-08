@@ -20,7 +20,8 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
-    - run: |        
+    - run: |     
+        cat ${{ github.action_path }}/test.log
         echo "${{ github.action_path }}"
         echo "----------------------------------"
         ls ${{ github.action_path }}
