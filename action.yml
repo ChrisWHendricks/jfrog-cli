@@ -21,7 +21,9 @@ runs:
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
     - run: |     
+        echo "----------------------------------"
         cat ${{ github.action_path }}/test.log
+         echo "----------------------------------"
         echo "${{ github.action_path }}"
         echo "----------------------------------"
         ls ${{ github.action_path }}
