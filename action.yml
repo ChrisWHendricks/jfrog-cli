@@ -12,13 +12,15 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log"
+    - run: | 
+        echo "Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log"
+        ls ${{ github.action_path }}
+        cat ${{ github.action_path }}/test.log
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
-    - run: | 
-        cat ${{ github.action_path }}/test.log
+    - run: |        
         echo "${{ github.action_path }}"
         echo "----------------------------------"
         ls ${{ github.action_path }}
