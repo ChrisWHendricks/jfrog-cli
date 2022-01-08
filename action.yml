@@ -2,11 +2,12 @@ name: 'Hello World'
 description: 'Greet someone'  
 inputs:
   NWPS_ARTIFACTORY_URL:
+    description: 'Artifactory Url'
     required: true
-  NWPS_ARTIFACTORY_USERNAME:
-    required: true
-  NWPS_ARTIFACTORY_PASSWORD:
-    required: true
+  #NWPS_ARTIFACTORY_USERNAME:
+  #  required: true
+  #NWPS_ARTIFACTORY_PASSWORD:
+  #  required: true
 #outputs:
 #  random-number:
 #    description: "Random number"
