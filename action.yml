@@ -18,15 +18,15 @@ runs:
   - name: Setup JFrog CLI
     uses: jfrog/setup-jfrog-cli@v1
       
-    - run: |
-        echo "----------------------------------"
-        echo ${{ inputs.NWPS_ARTIFACTORY_USERNAME }}
-        echo "----------------------------------"
-        
-        jfrog -v
-        jfrog config add --artifactory-url=${{ inputs.ARTIFACTORY_URL }} --user=${{ inputs.ARTIFACTORY_USERNAME }} --password=${{ inputs.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
-        jfrog rt ping
-      shell: bash
+  - run: |
+      echo "----------------------------------"
+      echo ${{ inputs.NWPS_ARTIFACTORY_USERNAME }}
+      echo "----------------------------------"
+
+      jfrog -v
+      jfrog config add --artifactory-url=${{ inputs.ARTIFACTORY_URL }} --user=${{ inputs.ARTIFACTORY_USERNAME }} --password=${{ inputs.ARTIFACTORY_PASSWORD }} --enc-password=false TESTSERVER
+      jfrog rt ping
+    shell: bash
     #- run: | 
     #    echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
     #    ls ${{ github.action_path }}
