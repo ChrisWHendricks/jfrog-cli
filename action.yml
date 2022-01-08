@@ -13,7 +13,7 @@ runs:
   using: "composite"
   steps:
     - run: | 
-        echo "Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log"
+        echo Hello ${{ inputs.who-to-greet }} >> ${{ github.action_path }}/test.log
         ls ${{ github.action_path }}
         cat ${{ github.action_path }}/test.log
       shell: bash
