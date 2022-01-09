@@ -10,11 +10,11 @@ jobs:
       - run: echo "TEST_VARIABLE=TESTING" >> $GITHUB_ENV; 
       - uses: actions/checkout@v2
       - id: foo
-        uses: chriswhendricks/jfrog-cli@master
-        with:
-          NWPS_ARTIFACTORY_URL: https://tylertech.jfrog.io/artifactory
-          NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
-          NWPS_ARTIFACTORY_PASSWORD: ${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}
+        uses: chriswhendricks/psint-jfrogcli@feat/setup-action
+        #with:
+        #  NWPS_ARTIFACTORY_URL: https://tylertech.jfrog.io/artifactory
+        #  NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
+        #  NWPS_ARTIFACTORY_PASSWORD: ${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}
           
       #- run: echo random-number ${{ steps.foo.outputs.random-number }}
       #  shell: bash
