@@ -10,18 +10,19 @@ jobs:
       ARTIFACTORY_USERNAME: "${{ secrets.NWPS_ARTIFACTORY_USERNAME }}"
       ARTIFACTORY_URL: "https://tylertech.jfrog.io/artifactory"
       ARTIFACTORY_PASSWORD: "${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}"
-    steps:
-      - run: echo "TEST_VARIABLE=TESTING" >> $GITHUB_ENV; 
+    steps:    
       - uses: actions/checkout@v2
-      - id: foo
+      
+      - id: setupJfrog
         uses: chriswhendricks/psint-jfrogcli/actions/setup@feat/setup-action
         #with:
         #  NWPS_ARTIFACTORY_URL: https://tylertech.jfrog.io/artifactory
         #  NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
         #  NWPS_ARTIFACTORY_PASSWORD: ${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}
           
-      - run: jfrog rt ping
-      #  shell: bash
+      - id: pingJfrog
+        run: jfrog rt ping
+   
      
     
 
