@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - run: echo "TEST_ENV=TESTING" >> $GITHUB_ENV; 
+      - run: echo "TEST_VARIABLE=TESTING" >> $GITHUB_ENV; 
       - uses: actions/checkout@v2
       - id: foo
         uses: chriswhendricks/jfrog-cli@master
