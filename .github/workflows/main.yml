@@ -20,6 +20,8 @@ jobs:
         #  NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
         #  NWPS_ARTIFACTORY_PASSWORD: ${{ secrets.NWPS_ARTIFACTORY_PASSWORD }}
           
-      #- run: echo random-number ${{ steps.foo.outputs.random-number }}
+      - run: jfrog rt ping
       #  shell: bash
+     
+    
 
