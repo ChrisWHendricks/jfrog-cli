@@ -10,7 +10,7 @@ jobs:
       - run: echo "TEST_VARIABLE=TESTING" >> $GITHUB_ENV; 
       - uses: actions/checkout@v2
       - id: foo
-        uses: chriswhendricks/psint-jfrogcli@76381c5211e78e7732485a88b5c79246d81916f2
+        uses: chriswhendricks/psint-jfrogcli/actions/setup@76381c5211e78e7732485a88b5c79246d81916f2
         #with:
         #  NWPS_ARTIFACTORY_URL: https://tylertech.jfrog.io/artifactory
         #  NWPS_ARTIFACTORY_USERNAME: ${{ secrets.NWPS_ARTIFACTORY_USERNAME }}
