@@ -20,6 +20,7 @@ runs:
       
   - run: |
       echo "----------------------------------"
+      echo ${{ env.TEST_VARIABLE }}
       echo ${{ inputs.NWPS_ARTIFACTORY_URL }}
       echo ${{ inputs.NWPS_ARTIFACTORY_USERNAME }}
       echo "----------------------------------"
